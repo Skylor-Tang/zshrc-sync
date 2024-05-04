@@ -7,6 +7,7 @@ A zsh plugin that automatically detects changes to the `.zshrc` file and syncs i
 - Automatically detects changes to the `.zshrc` file and syncs it to the GitHub repository.
 - Automatically syncs the `.zshrc` file when zsh exits.
 - Backs up the current `.zshrc` file to `$HOME/.zshrc-bak`.
+- Uses a symbolic link to link the `.zshrc` file to the copy in the GitHub repository.
 
 ## Installation
 
@@ -14,6 +15,13 @@ A zsh plugin that automatically detects changes to the `.zshrc` file and syncs i
 2. Set the following variables in your `.zshrc` file:
    - `ZSHRC_REPO_URL`: The URL of your GitHub repository.
    - `ZSHRC_FILE_PATH`: The full path to your `.zshrc` file.
+
+    For example:
+    ```zsh
+    export ZSHRC_REPO_URL='git@github.com:usename/myzshrc.git'
+    export ZSHRC_FILE_PATH="$HOME/.zshrc"
+    ```
+
 3. Install the plugin using `zplug`:
 
    ```zsh
