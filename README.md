@@ -4,6 +4,7 @@ A zsh plugin that automatically detects changes to the `.zshrc` file and syncs i
 
 ## Features
 
+- Check if the remote .zshrc file is different from the local one, and if so, pull the latest version from the remote repository and overwrite the local configuration.
 - Automatically detects changes to the `.zshrc` file and syncs it to the GitHub repository.
 - Automatically syncs the `.zshrc` file when zsh exits.
 - Backs up the current `.zshrc` file to `$HOME/.zshrc-bak`.
