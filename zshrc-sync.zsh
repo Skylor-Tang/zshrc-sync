@@ -22,16 +22,26 @@ function sync_zshrc() {
         ln -sf "$HOME/.zshrc-sync/.zshrc" "${ZSHRC_FILE_PATH}"
     fi
 
-    # Check if there are any changes to commit
+    # Check if there are any changes between the local and remote .zshrc files
     cd "$HOME/.zshrc-sync"
-    if [ -n "$(git status --porcelain)" ]; then
-        # Add the changes to the Git repository
-        git add .zshrc
-        timestamp=$(date +"%Y-%m-%d %H:%M:%S")
-        git commit -m "Update .zshrc (${timestamp})"
-        git push
+    git fetch
+    if ! git diff HEAD origin/main -- .zshrc &>/dev/null; then
+        # Remote .zshrc is different, overwrite the local file
+        git checkout origin/main -- .zshrc
+        cp "$HOME/.zshrc-sync/.zshrc" "${ZSHRC_FILE_PATH}"
+        echo "Local .zshrc file has been updated from the remote repository."
     else
-        echo "No changes to .zshrc, skipping commit and push."
+        # Local .zshrc is different or the same, push the local changes
+        if [ -n "$(git status --porcelain)" ]; then
+            # Add the changes to the Git repository
+            git add .zshrc
+            timestamp=$(date +"%Y-%m-%d %H:%M:%S")
+            git commit -m "Update .zshrc (${timestamp})"
+            git push
+            echo "Local .zshrc file has been pushed to the remote repository."
+        else
+            echo "No changes to .zshrc, skipping commit and push."
+        fi
     fi
 }
 
