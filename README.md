@@ -26,7 +26,7 @@ A zsh plugin that automatically detects changes to the `.zshrc` file and syncs i
 3. Install the plugin using `zplug`:
 
    ```zsh
-   zplug "Skylor-Tang/zshrc-sync", use:zshrc-sync.zsh
+   zplug "Skylor-Tang/zshrc-sync", use:zshrc-sync.zsh, from:github, at:main
    ```
 
 4. Reload the zsh configuration file:
