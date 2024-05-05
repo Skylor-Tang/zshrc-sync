@@ -42,7 +42,7 @@ You can manually call the `sync_zshrc()` function to immediately sync the `.zshr
 
 ## Notes
 
-- Ensure that the `ZSHRC_REPO_URL` and `ZSHRC_FILE_PATH` variables are set correctly.
+- Ensure that the `ZSHRC_REPO_URL` and `ZSHRC_FILE_PATH` variables are set correctly before zplug tries to load the zshrc-sync plugin.
 - The plugin will create a Git repository in the `$HOME/.zshrc-sync` directory, so make sure this directory is writable.
 - The plugin will back up the current `.zshrc` file to `$HOME/.zshrc-bak`.
 
